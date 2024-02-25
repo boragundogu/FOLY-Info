@@ -8,17 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var currentRoundVM = CurrentRoundVM()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            if let round = currentRoundVM.previousRound {
+                ForEach(0..<min(round.prizes.count, round.leaderboard.count), id: \.self) { index in
+                    let leaderboardItem = round.leaderboard[index]
+                    let prizeItem = round.prizes[index]
+                    
+                    HStack {
+                        Text(leaderboardItem.rank)
+                        Spacer()
+                        Text(String(leaderboardItem.score).suffix(9))
+                        Spacer()
+                        Text(leaderboardItem.characterName)
+                        Spacer()
+                        Text("\(prizeItem.amount) \(prizeItem.ticker)")
+                    }
+                    .padding()
+                }
+            }
         }
-        .padding()
+        .onAppear{
+            currentRoundVM.fetchCurrentRoundData()
+            currentRoundVM.fetchPreviousRoundData(prevNum: 1)
+        }
     }
 }
-
 #Preview {
     ContentView()
 }
