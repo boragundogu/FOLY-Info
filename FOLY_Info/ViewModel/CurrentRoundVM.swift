@@ -10,25 +10,25 @@ import Foundation
 
 class CurrentRoundVM: ObservableObject {
     
-    @Published var round: CurrentRound?
+    @Published var currentRound: CurrentRound?
     @Published var previousRound: CurrentRound?
     
     func fetchCurrentRoundData(){
         
         guard let url = URL(string: "https://gameserver.heliosblockchain.io/round/current") else {
-            return
+            return print("url error.")
         }
         
         URLSession.shared.dataTask(with: url) { (data,response,error) in
             
             guard let data = data else {
-                return
+                return print("data error \(error?.localizedDescription ?? "!")")
             }
             
             do {
                 let round = try JSONDecoder().decode(CurrentRound.self, from: data)
                 DispatchQueue.main.async {
-                    self.round = round
+                    self.currentRound = round
                 }
             }
             catch {
@@ -40,7 +40,7 @@ class CurrentRoundVM: ObservableObject {
     }
     
     func fetchPreviousRoundData(prevNum: Int){
-        guard let url = URL(string: "https://gameserver.heliosblockchain.io/rounds/\((round?.id ?? 83) - prevNum)") else {
+        guard let url = URL(string: "https://gameserver.heliosblockchain.io/rounds/\((currentRound?.id ?? 83) - prevNum)") else {
             return
         }
         
@@ -53,7 +53,6 @@ class CurrentRoundVM: ObservableObject {
                 let previousRound = try JSONDecoder().decode(CurrentRound.self, from: data)
                 DispatchQueue.main.async {
                     self.previousRound = previousRound
-                    print(url)
                 }
             }
             catch {

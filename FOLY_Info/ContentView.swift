@@ -9,11 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @StateObject var currentRoundVM = CurrentRoundVM()
+    @ObservedObject var currentRoundVM = CurrentRoundVM()
     
     var body: some View {
         VStack {
             if let round = currentRoundVM.previousRound {
+                Text(round.message)
                 ForEach(0..<min(round.prizes.count, round.leaderboard.count), id: \.self) { index in
                     let leaderboardItem = round.leaderboard[index]
                     let prizeItem = round.prizes[index]
@@ -33,7 +34,7 @@ struct ContentView: View {
         }
         .onAppear{
             currentRoundVM.fetchCurrentRoundData()
-            currentRoundVM.fetchPreviousRoundData(prevNum: 1)
+            currentRoundVM.fetchPreviousRoundData(prevNum: 2)
         }
     }
 }
