@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct PreviousCardView: View {
+struct PreviousBoardView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Previous Card View")
+            .padding(.top, 600)
     }
 }
 
 #Preview {
-    PreviousCardView()
+    PreviousBoardView()
 }

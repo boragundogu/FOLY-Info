@@ -1,15 +1,27 @@
 //
-//  CurrentCardView.swift
+//  CurrentCard.swift
 //  FOLY_Info
 //
-//  Created by Bora Gündoğu on 27.02.2024.
+//  Created by Bora Gündoğu on 28.02.2024.
 //
 
 import SwiftUI
 
 struct CurrentCardView: View {
+    
+    @StateObject var currentRoundVM = CurrentRoundVM()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            AsyncImage(url: URL(string: currentRoundVM.currentRound?.minimapUrl ?? "xx")) { image in
+                image.image?.resizable()
+                    .scaledToFill()
+            }
+        }
+        .frame(width: 350, height: 350, alignment: .center)
+        .onAppear{
+            currentRoundVM.fetchCurrentRoundData()
+        }
     }
 }
 

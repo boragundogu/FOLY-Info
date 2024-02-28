@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CarouselViewChild: View, Identifiable {
     var id: Int
+    @ObservedObject var currentRoundVM = CurrentRoundVM()
+    
+    
     @ViewBuilder var content: any View
     
     var body: some View {

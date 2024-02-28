@@ -13,7 +13,11 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            if let round = currentRoundVM.previousRound {
+            if let round = currentRoundVM.currentRound {
+                
+                Text("Friends Of Little Yus")
+                    .offset(y: -400)
+                
                 Text(round.message)
                 ForEach(0..<min(round.prizes.count, round.leaderboard.count), id: \.self) { index in
                     let leaderboardItem = round.leaderboard[index]
@@ -32,6 +36,7 @@ struct ContentView: View {
                 }
             }
         }
+        .padding(.top, 700)
         .onAppear{
             currentRoundVM.fetchCurrentRoundData()
             currentRoundVM.fetchPreviousRoundData(prevNum: 2)
