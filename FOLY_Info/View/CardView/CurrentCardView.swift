@@ -12,16 +12,16 @@ struct CurrentCardView: View {
     @StateObject var currentRoundVM = CurrentRoundVM()
     
     var body: some View {
-        ZStack{
-            AsyncImage(url: URL(string: currentRoundVM.currentRound?.minimapUrl ?? "xx")) { image in
-                image.image?.resizable()
-                    .scaledToFill()
-            }
+        ZStack {
+            Text(currentRoundVM.currentRound?.message ?? "Message")
+                .padding()
+                .font(.system(size: 20, weight: .medium, design: .default))
         }
-        .frame(width: 350, height: 350, alignment: .center)
-        .onAppear{
+        .padding()
+        .onAppear {
             currentRoundVM.fetchCurrentRoundData()
         }
+        
     }
 }
 

@@ -12,6 +12,7 @@ class CurrentRoundVM: ObservableObject {
     
     @Published var currentRound: CurrentRound?
     @Published var previousRound: CurrentRound?
+    private var previousID: Int = 0
     
     func fetchCurrentRoundData(){
         
@@ -29,6 +30,7 @@ class CurrentRoundVM: ObservableObject {
                 let round = try JSONDecoder().decode(CurrentRound.self, from: data)
                 DispatchQueue.main.async {
                     self.currentRound = round
+                    self.previousID = round.id
                 }
             }
             catch {
@@ -40,7 +42,7 @@ class CurrentRoundVM: ObservableObject {
     }
     
     func fetchPreviousRoundData(prevNum: Int){
-        guard let url = URL(string: "https://gameserver.heliosblockchain.io/rounds/\((currentRound?.id ?? 83) - prevNum)") else {
+        guard let url = URL(string: "https://gameserver.heliosblockchain.io/rounds/\(previousID - prevNum)") else {
             return
         }
         

@@ -13,22 +13,25 @@ struct CarouselView: View {
     @State private var snappedItem = 0.0
     @State private var draggingItem = 0.0
     @State private var activeIndex: Int = 0
+    @StateObject var currentVM = CurrentRoundVM()
 
     
-    var views: [AnyView] = [
-        AnyView(CurrentCardView()),
-        AnyView(CurrentCardView()),
-        AnyView(CurrentCardView()),
-    ]
+    var views: [CarouselViewChild] = placeholderCarouselChildView
     let testViews: [AnyView] = [
-        AnyView(ContentView()),
+        AnyView(CurrentCardView().offset(y: 300)),
         AnyView(PreviousBoardView()),
-        AnyView(SecondPreviousBoardView())
+        AnyView(SecondPreviousView())
     ]
     
     var body: some View {
         ZStack{
-            ForEach(views.indices, id:\.self) { view in
+            Text("Friends Of Little Yus")
+                .padding(.bottom, 450)
+                .font(.system(size: 20, weight: .bold, design: .default))
+            Text("Leaderboards")
+                .padding(.bottom, 400)
+                .font(.system(size: 20, weight: .semibold, design: .default))
+            ForEach(views) { view in
                 view
                     .scaleEffect(1.0 - abs(distance(view.id)) * 0.2 )
                     .opacity(1.0 - abs(distance(view.id)) * 0.3 )
@@ -39,8 +42,11 @@ struct CarouselView: View {
             ForEach(testViews.indices, id:\.self) { _ in
                 testViews[activeIndex]
             }
-            //.padding(.top, 600)
             
+        }
+        .onAppear{
+            currentVM.fetchCurrentRoundData()
+            currentVM.fetchPreviousRoundData(prevNum: 1)
         }
         .padding(.bottom, 250)
         .gesture(
@@ -85,7 +91,7 @@ var placeholderCarouselChildView: [CarouselViewChild] = [
         ZStack{
             RoundedRectangle(cornerRadius: 18)
                 .fill(Color.red)
-            Text("Previous Round Card View")
+            PreviousBoardView()
         }
         .frame(width: 350, height: 350)
         .padding()
@@ -95,8 +101,7 @@ var placeholderCarouselChildView: [CarouselViewChild] = [
         ZStack{
             RoundedRectangle(cornerRadius: 18)
                 .fill(Color.yellow)
-            Text("Second Previous Round Card View")
-                .padding()
+            SecondPreviousView()
         }
         .frame(width: 350, height: 350)
     }),
@@ -105,7 +110,7 @@ var placeholderCarouselChildView: [CarouselViewChild] = [
         ZStack{
             RoundedRectangle(cornerRadius: 18)
                 .fill(Color.green)
-            Text("Current Round")
+            ContentView()
         }
         .frame(width: 350, height: 350)
     })
