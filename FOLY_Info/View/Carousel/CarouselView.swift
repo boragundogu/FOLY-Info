@@ -19,8 +19,9 @@ struct CarouselView: View {
     var views: [CarouselViewChild] = placeholderCarouselChildView
     let testViews: [AnyView] = [
         AnyView(CurrentCardView().offset(y: 300)),
-        AnyView(PreviousBoardView()),
-        AnyView(SecondPreviousView())
+        AnyView(SecondPreviousCardView().offset(y: 300)),
+        AnyView(PreviousCardView().offset(y: 300))
+        
     ]
     
     var body: some View {
@@ -46,7 +47,6 @@ struct CarouselView: View {
         }
         .onAppear{
             currentVM.fetchCurrentRoundData()
-            currentVM.fetchPreviousRoundData(prevNum: 1)
         }
         .padding(.bottom, 250)
         .gesture(

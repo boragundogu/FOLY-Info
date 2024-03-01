@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            if let round = currentRoundVM.previousRound {
+            if let round = currentRoundVM.currentRound {
                 
                 ForEach(0..<min(round.prizes.count, round.leaderboard.count), id: \.self) { index in
                     let leaderboardItem = round.leaderboard[index]

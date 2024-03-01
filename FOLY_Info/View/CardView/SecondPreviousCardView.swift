@@ -12,7 +12,19 @@ struct SecondPreviousCardView: View {
     @StateObject var previousRoundVM = CurrentRoundVM()
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Text(previousRoundVM.previousRound?.message ?? "")
+                .padding()
+                .font(.system(size: 20, weight: .medium, design: .default))
+        }
+        .padding()
+        .onAppear {
+            previousRoundVM.fetchCurrentRoundData()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                previousRoundVM.fetchPreviousRoundData(prevNum: 2)
+            }
+        }
     }
 }
 
