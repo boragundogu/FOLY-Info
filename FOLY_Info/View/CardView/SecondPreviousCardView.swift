@@ -14,17 +14,16 @@ struct SecondPreviousCardView: View {
     var body: some View {
         ZStack {
             Text(previousRoundVM.previousRound?.message ?? "")
+                .onAppear {
+                    previousRoundVM.fetchCurrentRoundData()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        previousRoundVM.fetchPreviousRoundData(prevNum: 2)
+                    }
+                }
                 .padding()
                 .font(.system(size: 20, weight: .medium, design: .default))
         }
         .padding()
-        .onAppear {
-            previousRoundVM.fetchCurrentRoundData()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                previousRoundVM.fetchPreviousRoundData(prevNum: 2)
-            }
-        }
     }
 }
 

@@ -10,8 +10,8 @@ import Foundation
 
 struct CurrentRound: Codable, Identifiable {
     
-    var id: Int
-    let startDate: String
+    let id: Int
+    let timeLeft: Int
     let endDate: String
     let prizes: [Prizes]
     let minimapUrl: String

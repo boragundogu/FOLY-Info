@@ -15,6 +15,16 @@ struct SecondPreviousView: View {
         VStack {
             if let round = previousRoundVM.previousRound {
                 
+                Text("Previous Round" + "(\(previousRoundVM.previousRound?.id ?? 83))")
+                    .onAppear {
+                        previousRoundVM.fetchCurrentRoundData()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            previousRoundVM.fetchPreviousRoundData(prevNum: 2)
+                        }
+                    }
+                    .font(.system(size: 20, weight: .semibold, design: .default))
+                    .padding(.top, 15)
+                
                 ForEach(0..<min(round.prizes.count, round.leaderboard.count), id: \.self) { index in
                     let leaderboardItem = round.leaderboard[index]
                     let prizeItem = round.prizes[index]
@@ -41,8 +51,11 @@ struct SecondPreviousView: View {
                 }
             }
         }
-        .onAppear{
-            previousRoundVM.fetchPreviousRoundData(prevNum: 2)
+        .onAppear {
+            previousRoundVM.fetchCurrentRoundData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                previousRoundVM.fetchPreviousRoundData(prevNum: 2)
+            }
         }
     }
 }

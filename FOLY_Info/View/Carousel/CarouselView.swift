@@ -45,9 +45,6 @@ struct CarouselView: View {
             }
             
         }
-        .onAppear{
-            currentVM.fetchCurrentRoundData()
-        }
         .padding(.bottom, 250)
         .gesture(
             DragGesture()
@@ -91,7 +88,7 @@ var placeholderCarouselChildView: [CarouselViewChild] = [
         ZStack{
             RoundedRectangle(cornerRadius: 18)
                 .fill(Color.red)
-            PreviousBoardView()
+            SecondPreviousView()
         }
         .frame(width: 350, height: 350)
         .padding()
@@ -101,7 +98,7 @@ var placeholderCarouselChildView: [CarouselViewChild] = [
         ZStack{
             RoundedRectangle(cornerRadius: 18)
                 .fill(Color.yellow)
-            SecondPreviousView()
+            PreviousBoardView()
         }
         .frame(width: 350, height: 350)
     }),
@@ -110,7 +107,7 @@ var placeholderCarouselChildView: [CarouselViewChild] = [
         ZStack{
             RoundedRectangle(cornerRadius: 18)
                 .fill(Color.green)
-            ContentView()
+            CurrentBoardView()
         }
         .frame(width: 350, height: 350)
     })

@@ -8,20 +8,18 @@
 import SwiftUI
 
 struct CurrentCardView: View {
-    
     @StateObject var currentRoundVM = CurrentRoundVM()
     
     var body: some View {
-        ZStack {
-            Text(currentRoundVM.currentRound?.message ?? "Message")
-                .padding()
+
+        VStack {
+            Text(currentRoundVM.currentRound?.message ?? "message for current round.")
                 .font(.system(size: 20, weight: .medium, design: .default))
         }
-        .padding()
-        .onAppear {
+        .onAppear{
             currentRoundVM.fetchCurrentRoundData()
         }
-        
+        .padding()
     }
 }
 
