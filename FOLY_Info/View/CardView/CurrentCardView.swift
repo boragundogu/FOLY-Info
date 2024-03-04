@@ -14,7 +14,10 @@ struct CurrentCardView: View {
 
         VStack {
             Text(currentRoundVM.currentRound?.message ?? "message for current round.")
-                .font(.system(size: 20, weight: .medium, design: .default))
+                .font(.system(size: 17, weight: .light, design: .default))
+                .padding()
+            RoundCountdown()
+                .font(.system(size: 16, weight: .light, design: .default))
         }
         .onAppear{
             currentRoundVM.fetchCurrentRoundData()

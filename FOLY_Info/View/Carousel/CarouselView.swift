@@ -18,52 +18,57 @@ struct CarouselView: View {
     
     var views: [CarouselViewChild] = placeholderCarouselChildView
     let testViews: [AnyView] = [
-        AnyView(CurrentCardView().offset(y: 300)),
-        AnyView(SecondPreviousCardView().offset(y: 300)),
-        AnyView(PreviousCardView().offset(y: 300))
+        AnyView(CurrentCardView().offset(y: 350)),
+        AnyView(SecondPreviousCardView().offset(y: 350)),
+        AnyView(PreviousCardView().offset(y: 350))
         
     ]
     
     var body: some View {
-        ZStack{
-            Text("Friends Of Little Yus")
-                .padding(.bottom, 450)
-                .font(.system(size: 20, weight: .bold, design: .default))
-            Text("Leaderboards")
-                .padding(.bottom, 400)
-                .font(.system(size: 20, weight: .semibold, design: .default))
-            ForEach(views) { view in
-                view
-                    .scaleEffect(1.0 - abs(distance(view.id)) * 0.2 )
-                    .opacity(1.0 - abs(distance(view.id)) * 0.3 )
-                    .offset(x: myXOffset(view.id), y: 0)
-                    .zIndex(1.0 - abs(distance(view.id)) * 0.1)
-            }
-            
-            ForEach(testViews.indices, id:\.self) { _ in
-                testViews[activeIndex]
-            }
-            
-        }
-        .padding(.bottom, 250)
-        .gesture(
-            DragGesture()
-                .onChanged { value in
-                    draggingItem = snappedItem + value.translation.width / 300
+        ZStack {
+            Color("mainBG").ignoresSafeArea(.all)
+            ZStack{
+                Text("Friends Of Little Yus")
+                    .padding(.bottom, 450)
+                    .font(.system(size: 20, weight: .bold, design: .default))
+                Text("Leaderboards")
+                    .padding(.bottom, 400)
+                    .font(.system(size: 20, weight: .medium, design: .default))
+                ForEach(views) { view in
+                    view
+                        .scaleEffect(1.0 - abs(distance(view.id)) * 0.2 )
+                        .opacity(1.0 - abs(distance(view.id)) * 0.3 )
+                        .offset(x: myXOffset(view.id), y: 0)
+                        .zIndex(1.0 - abs(distance(view.id)) * 0.1)
+                        .padding(.top, 70)
                 }
-                .onEnded { value in
-                    withAnimation {
-                        draggingItem = snappedItem + value.predictedEndTranslation.width / 300
-                        draggingItem = round(draggingItem).remainder(dividingBy: Double(views.count))
-                        snappedItem = draggingItem
-                        
-                        self.activeIndex = views.count + Int(draggingItem)
-                        if self.activeIndex > views.count || Int(draggingItem) >= 0 {
-                            self.activeIndex = Int(draggingItem)
+                
+                ForEach(testViews.indices, id:\.self) { _ in
+                    testViews[activeIndex]
+                }
+                
+            }
+            .foregroundStyle(.white)
+            .padding(.bottom, 250)
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        draggingItem = snappedItem + value.translation.width / 300
+                    }
+                    .onEnded { value in
+                        withAnimation {
+                            draggingItem = snappedItem + value.predictedEndTranslation.width / 300
+                            draggingItem = round(draggingItem).remainder(dividingBy: Double(views.count))
+                            snappedItem = draggingItem
+                            
+                            self.activeIndex = views.count + Int(draggingItem)
+                            if self.activeIndex > views.count || Int(draggingItem) >= 0 {
+                                self.activeIndex = Int(draggingItem)
+                            }
                         }
                     }
-                }
         )
+        }
     }
     
     func distance(_ item: Int) -> Double {
@@ -87,7 +92,7 @@ var placeholderCarouselChildView: [CarouselViewChild] = [
     CarouselViewChild(id: 1, content: {
         ZStack{
             RoundedRectangle(cornerRadius: 18)
-                .fill(Color.red)
+                .fill(Color("cardBG"))
             SecondPreviousView()
         }
         .frame(width: 350, height: 350)
@@ -97,7 +102,7 @@ var placeholderCarouselChildView: [CarouselViewChild] = [
     CarouselViewChild(id: 2, content: {
         ZStack{
             RoundedRectangle(cornerRadius: 18)
-                .fill(Color.yellow)
+                .fill(Color("cardBG"))
             PreviousBoardView()
         }
         .frame(width: 350, height: 350)
@@ -106,7 +111,7 @@ var placeholderCarouselChildView: [CarouselViewChild] = [
     CarouselViewChild(id: 3, content: {
         ZStack{
             RoundedRectangle(cornerRadius: 18)
-                .fill(Color.green)
+                .fill(Color("cardBG"))
             CurrentBoardView()
         }
         .frame(width: 350, height: 350)

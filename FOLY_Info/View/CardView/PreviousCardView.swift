@@ -21,7 +21,7 @@ struct PreviousCardView: View {
                     }
                 }
                 .padding()
-                .font(.system(size: 20, weight: .medium, design: .default))
+                .font(.system(size: 17, weight: .light, design: .default))
         }
         .padding()
     }

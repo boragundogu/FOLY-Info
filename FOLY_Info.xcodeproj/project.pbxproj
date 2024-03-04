@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090C99592B96433900ABC7F7 /* RoundCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C99582B96433900ABC7F7 /* RoundCountdown.swift */; };
 		0938E7792B8E216C009447E2 /* CarouselViewChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938E7782B8E216C009447E2 /* CarouselViewChild.swift */; };
 		0938E77B2B8E21B0009447E2 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938E77A2B8E21B0009447E2 /* CarouselView.swift */; };
 		0938E7822B8E6702009447E2 /* CurrentBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938E7812B8E6702009447E2 /* CurrentBoardView.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		090C99582B96433900ABC7F7 /* RoundCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCountdown.swift; sourceTree = "<group>"; };
 		0938E7782B8E216C009447E2 /* CarouselViewChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewChild.swift; sourceTree = "<group>"; };
 		0938E77A2B8E21B0009447E2 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		0938E7812B8E6702009447E2 /* CurrentBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentBoardView.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 				0938E7872B8FD36B009447E2 /* CardView */,
 				0938E7802B8E66E7009447E2 /* CardBoardView */,
 				0938E7772B8E2157009447E2 /* Carousel */,
+				090C99582B96433900ABC7F7 /* RoundCountdown.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			files = (
 				0938E7822B8E6702009447E2 /* CurrentBoardView.swift in Sources */,
 				0938E7842B8E671F009447E2 /* PreviousBoardView.swift in Sources */,
+				090C99592B96433900ABC7F7 /* RoundCountdown.swift in Sources */,
 				0938E78D2B912578009447E2 /* SecondPreviousCardView.swift in Sources */,
 				0938E7892B8FD394009447E2 /* CurrentCardView.swift in Sources */,
 				0938E7792B8E216C009447E2 /* CarouselViewChild.swift in Sources */,
