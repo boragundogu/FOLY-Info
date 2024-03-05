@@ -11,7 +11,7 @@ import Foundation
 class CurrentRoundVM: ObservableObject {
     
     @Published var currentRound: CurrentRound?
-    @Published var previousRound: CurrentRound?
+    @Published var previousRound: PreviousRound?
     
     func fetchCurrentRoundData(){
         
@@ -53,7 +53,7 @@ class CurrentRoundVM: ObservableObject {
             }
             
             do {
-                let previousRound = try JSONDecoder().decode(CurrentRound.self, from: data)
+                let previousRound = try JSONDecoder().decode(PreviousRound.self, from: data)
                 DispatchQueue.main.async {
                     self.previousRound = previousRound
                 }

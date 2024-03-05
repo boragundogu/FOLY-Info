@@ -28,30 +28,30 @@ struct PreviousBoardView: View {
                     .font(.system(size: 20, weight: .medium, design: .default))
                     .padding(.top, 15)
                 
-                ForEach(0..<min(round.prizes.count, round.leaderboard.count), id: \.self) { index in
-                    let leaderboardItem = round.leaderboard[index]
-                    let prizeItem = round.prizes[index]
-                    
-                    HStack {
-                        Text(leaderboardItem.rank)
-                            .font(.system(size: 16, weight: .regular, design: .default))
-                            .padding(.leading, 5)
-                        Spacer()
-                        Text(String(leaderboardItem.score).suffix(9))
-                            .font(.system(size: 16, weight: .regular, design: .default))
-                            .multilineTextAlignment(.trailing)
-                            .padding(.trailing, 5)
-                        Spacer()
-                        Text(leaderboardItem.characterName)
-                            .font(.system(size: 16, weight: .regular, design: .default))
-                            .padding(.leading, 5)
-                        Spacer()
-                        Text("\(prizeItem.amount) \(prizeItem.ticker)")
-                            .font(.system(size: 16, weight: .regular, design: .default))
-                            .padding(.trailing, 5)
+                    ForEach(0..<min(round.prizes.count, round.leaderboard.count), id: \.self) { index in
+                        let leaderboardItem = round.leaderboard[index]
+                        let prizeItem = round.prizes[index]
+                        
+                        HStack {
+                            Spacer()
+                            Text(leaderboardItem.rank)
+                                .font(.system(size: 16, weight: .regular, design: .default))
+                                .frame(width: 40, alignment: .center)
+                            Text(String(leaderboardItem.score).suffix(9))
+                                .font(.system(size: 16, weight: .regular, design: .default))
+                                .multilineTextAlignment(.trailing)
+                                .frame(width: 80, alignment: .center)
+                            Text(leaderboardItem.characterName)
+                                .font(.system(size: 16, weight: .regular, design: .default))
+                                .frame(width: 80, alignment: .center)
+                            Spacer()
+                            Text("\(prizeItem.amount) \(prizeItem.ticker)")
+                                .font(.system(size: 16, weight: .regular, design: .default))
+                                .frame(width: 70, alignment: .center)
+                        }
+                        .padding()
+                        .padding(.trailing, 30)
                     }
-                    .padding()
-                }
             }
         }
         .onAppear {

@@ -25,24 +25,24 @@ struct CurrentBoardView: View {
                     let prizeItem = round.prizes[index]
                     
                     HStack {
+                        Spacer()
                         Text(leaderboardItem.rank)
                             .font(.system(size: 16, weight: .regular, design: .default))
-                            .padding(.leading, 5)
-                        Spacer()
+                            .frame(width: 40, alignment: .center)
                         Text(String(leaderboardItem.score).suffix(9))
                             .font(.system(size: 16, weight: .regular, design: .default))
                             .multilineTextAlignment(.trailing)
-                            .padding(.trailing, 5)
-                        Spacer()
+                            .frame(width: 80, alignment: .center)
                         Text(leaderboardItem.characterName)
                             .font(.system(size: 16, weight: .regular, design: .default))
-                            .padding(.leading, 5)
+                            .frame(width: 80, alignment: .center)
                         Spacer()
                         Text("\(prizeItem.amount) \(prizeItem.ticker)")
                             .font(.system(size: 16, weight: .regular, design: .default))
-                            .padding(.trailing, 5)
+                            .frame(width: 70, alignment: .center)
                     }
                     .padding()
+                    .padding(.trailing, 30)
                 }
             }
         }

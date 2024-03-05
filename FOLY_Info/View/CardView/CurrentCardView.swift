@@ -13,6 +13,8 @@ struct CurrentCardView: View {
     var body: some View {
 
         VStack {
+            ActivePlayerView()
+                .font(.system(size: 17, weight: .light, design: .default))
             Text(currentRoundVM.currentRound?.message ?? "message for current round.")
                 .font(.system(size: 17, weight: .light, design: .default))
                 .padding()
