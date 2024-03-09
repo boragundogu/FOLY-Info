@@ -13,7 +13,7 @@ struct PreviousCardView: View {
     
     var body: some View {
         ZStack {
-            Text((previousRoundVM.previousRound?.summary.prefix(40) ?? "") + (previousRoundVM.previousRound?.summary.suffix(1) ?? ""))
+            Text("Round \(previousRoundVM.previousRound?.id ?? 50) has ended. Congrats to winners!")
                 .onAppear {
                     previousRoundVM.fetchCurrentRoundData()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {

@@ -18,6 +18,7 @@
 		0938E7892B8FD394009447E2 /* CurrentCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938E7882B8FD394009447E2 /* CurrentCardView.swift */; };
 		0938E78B2B912566009447E2 /* PreviousCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938E78A2B912566009447E2 /* PreviousCardView.swift */; };
 		0938E78D2B912578009447E2 /* SecondPreviousCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938E78C2B912578009447E2 /* SecondPreviousCardView.swift */; };
+		095377FF2B9D07DE00A618B9 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095377FE2B9D07DE00A618B9 /* SplashView.swift */; };
 		096C86302B8A456A0044D876 /* FOLY_InfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096C862F2B8A456A0044D876 /* FOLY_InfoApp.swift */; };
 		096C86342B8A456B0044D876 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 096C86332B8A456B0044D876 /* Assets.xcassets */; };
 		096C86372B8A456B0044D876 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 096C86362B8A456B0044D876 /* Preview Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		0938E7882B8FD394009447E2 /* CurrentCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCardView.swift; sourceTree = "<group>"; };
 		0938E78A2B912566009447E2 /* PreviousCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousCardView.swift; sourceTree = "<group>"; };
 		0938E78C2B912578009447E2 /* SecondPreviousCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPreviousCardView.swift; sourceTree = "<group>"; };
+		095377FE2B9D07DE00A618B9 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		096C862C2B8A456A0044D876 /* FOLY_Info.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FOLY_Info.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		096C862F2B8A456A0044D876 /* FOLY_InfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FOLY_InfoApp.swift; sourceTree = "<group>"; };
 		096C86332B8A456B0044D876 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				0938E7772B8E2157009447E2 /* Carousel */,
 				090C99582B96433900ABC7F7 /* RoundCountdown.swift */,
 				090C995A2B9713AF00ABC7F7 /* ActivePlayerView.swift */,
+				095377FE2B9D07DE00A618B9 /* SplashView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			files = (
 				0938E7822B8E6702009447E2 /* CurrentBoardView.swift in Sources */,
 				0938E7842B8E671F009447E2 /* PreviousBoardView.swift in Sources */,
+				095377FF2B9D07DE00A618B9 /* SplashView.swift in Sources */,
 				090C99592B96433900ABC7F7 /* RoundCountdown.swift in Sources */,
 				0938E78D2B912578009447E2 /* SecondPreviousCardView.swift in Sources */,
 				0938E7892B8FD394009447E2 /* CurrentCardView.swift in Sources */,

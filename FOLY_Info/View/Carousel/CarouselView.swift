@@ -53,11 +53,11 @@ struct CarouselView: View {
             .gesture(
                 DragGesture()
                     .onChanged { value in
-                        draggingItem = snappedItem + value.translation.width / 300
+                        draggingItem = snappedItem + value.translation.width / 700
                     }
                     .onEnded { value in
                         withAnimation {
-                            draggingItem = snappedItem + value.predictedEndTranslation.width / 300
+                            draggingItem = snappedItem + value.predictedEndTranslation.width / 700
                             draggingItem = round(draggingItem).remainder(dividingBy: Double(views.count))
                             snappedItem = draggingItem
                             

@@ -11,7 +11,7 @@ import SwiftUI
 struct FOLY_InfoApp: App {
     var body: some Scene {
         WindowGroup {
-            CarouselView()
+            SplashView()
         }
     }
 }
