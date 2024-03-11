@@ -13,8 +13,9 @@ struct CarouselView: View {
     @State private var snappedItem = 0.0
     @State private var draggingItem = 0.0
     @State private var activeIndex: Int = 0
+    @State private var showInfoView = false
     @StateObject var currentVM = CurrentRoundVM()
-
+    
     
     var views: [CarouselViewChild] = placeholderCarouselChildView
     let testViews: [AnyView] = [
@@ -25,50 +26,66 @@ struct CarouselView: View {
     ]
     
     var body: some View {
-        ZStack {
-            Color("mainBG").ignoresSafeArea(.all)
-            ZStack{
-                Text("Friends Of Little Yus")
-                    .padding(.bottom, 450)
-                    .font(.system(size: 20, weight: .bold, design: .default))
-                Text("Leaderboards")
-                    .padding(.bottom, 400)
-                    .font(.system(size: 20, weight: .medium, design: .default))
-                ForEach(views) { view in
-                    view
-                        .scaleEffect(1.0 - abs(distance(view.id)) * 0.2 )
-                        .opacity(1.0 - abs(distance(view.id)) * 0.3 )
-                        .offset(x: myXOffset(view.id), y: 0)
-                        .zIndex(1.0 - abs(distance(view.id)) * 0.1)
-                        .padding(.top, 70)
-                }
-                
-                ForEach(testViews.indices, id:\.self) { _ in
-                    testViews[activeIndex]
-                }
-                
-            }
-            .foregroundStyle(.white)
-            .padding(.bottom, 250)
-            .gesture(
-                DragGesture()
-                    .onChanged { value in
-                        draggingItem = snappedItem + value.translation.width / 700
+        NavigationStack {
+            ZStack {
+                Color("mainBG").ignoresSafeArea(.all)
+                ZStack{
+                    Text("Friends Of Little Yus")
+                        .padding(.bottom, 450)
+                        .font(.system(size: 20, weight: .bold, design: .default))
+                    Text("Leaderboards")
+                        .padding(.bottom, 400)
+                        .font(.system(size: 20, weight: .medium, design: .default))
+                    ForEach(views) { view in
+                        view
+                            .scaleEffect(1.0 - abs(distance(view.id)) * 0.2 )
+                            .opacity(1.0 - abs(distance(view.id)) * 0.3 )
+                            .offset(x: myXOffset(view.id), y: 0)
+                            .zIndex(1.0 - abs(distance(view.id)) * 0.1)
+                            .padding(.top, 70)
                     }
-                    .onEnded { value in
-                        withAnimation {
-                            draggingItem = snappedItem + value.predictedEndTranslation.width / 700
-                            draggingItem = round(draggingItem).remainder(dividingBy: Double(views.count))
-                            snappedItem = draggingItem
-                            
-                            self.activeIndex = views.count + Int(draggingItem)
-                            if self.activeIndex > views.count || Int(draggingItem) >= 0 {
-                                self.activeIndex = Int(draggingItem)
+                    
+                    ForEach(testViews.indices, id:\.self) { _ in
+                        testViews[activeIndex]
+                    }
+                    
+                }
+                .foregroundStyle(.white)
+                .padding(.bottom, 250)
+                .gesture(
+                    DragGesture()
+                        .onChanged { value in
+                            draggingItem = snappedItem + value.translation.width / 700
+                        }
+                        .onEnded { value in
+                            withAnimation {
+                                draggingItem = snappedItem + value.predictedEndTranslation.width / 700
+                                draggingItem = round(draggingItem).remainder(dividingBy: Double(views.count))
+                                snappedItem = draggingItem
+                                
+                                self.activeIndex = views.count + Int(draggingItem)
+                                if self.activeIndex > views.count || Int(draggingItem) >= 0 {
+                                    self.activeIndex = Int(draggingItem)
+                                }
                             }
                         }
+                )
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        InfoDetailView()
+                    } label: {
+                        Image(systemName: "info.square")
+                            .foregroundStyle(.cyan)
+                            .padding()
                     }
-        )
+
+
+                }
+            }
         }
+
     }
     
     func distance(_ item: Int) -> Double {
