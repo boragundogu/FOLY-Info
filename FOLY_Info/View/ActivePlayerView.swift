@@ -56,6 +56,7 @@ struct ActivePlayerView: View {
         VStack {
             if let playerData = playerDataManager.playerData {
                 Text("Active Player: \(playerData.sockets.connections)")
+                    .fontWeight(.bold)
             } else {
                 Text("Loading...")
             }
