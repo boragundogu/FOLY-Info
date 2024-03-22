@@ -4,6 +4,7 @@ Friends Of Little Yus App | Building with SwiftUI
 This have 2 schemes;
 
 Main Screen: Shows current and two previous roundz leaderboard.
+
 Detail Screen: Shows FAQs and answers.
 
 
