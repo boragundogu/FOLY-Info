@@ -11,5 +11,4 @@ https://github.com/boragundogu/FOLY-Info/assets/82386626/193c151c-de31-4933-811e
 
 
 
-
-![foly-banner](https://github.com/boragundogu/FOLY-Info/assets/82386626/6a41a75f-3572-4218-9461-a937a6cc0db9)
+![folyBanner](https://github.com/boragundogu/FOLY-Info/assets/82386626/e81aa2e0-e42f-4172-baec-cea4f6a9864d)
